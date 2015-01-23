@@ -26,7 +26,6 @@ class NativeTextField extends EventDispatcher
     public function new(?config:NativeTextFieldConfig)
     {
         super();
-        trace( PrepareConfigForNativeCall(config));
         this.eventDispatcherId = ExtensionKit.RegisterEventDispatcher(this);
         nativetext_create_text_field(this.eventDispatcherId, PrepareConfigForNativeCall(config));
     }

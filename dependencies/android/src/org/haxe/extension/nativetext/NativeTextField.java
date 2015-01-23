@@ -243,22 +243,12 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
         {
             layoutParams.width = (width <= 0.0 ? RelativeLayout.LayoutParams.WRAP_CONTENT : Math.round(width));
             layoutParamsModified = true;
-			if(width != -1)
-			{
-				setMaxWidth(Math.round(width));
-				setMinWidth(Math.round(width));
-			}
         }
 
         if (height != null)
         {
             layoutParams.height = (height <= 0.0 ? RelativeLayout.LayoutParams.WRAP_CONTENT : Math.round(height));
             layoutParamsModified = true;
-			if(height != -1)
-			{
-				setMaxHeight(Math.round(height));
-				setMinHeight(Math.round(height));
-			}
         }
         
         if (layoutParamsModified)
