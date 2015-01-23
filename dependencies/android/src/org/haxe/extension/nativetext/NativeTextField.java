@@ -4,10 +4,12 @@ import org.haxe.extension.extensionkit.HaxeCallback;
 import org.haxe.extension.extensionkit.Trace;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import android.content.Context;
 import android.text.InputType;
 import android.util.TypedValue;
+import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +53,11 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
         
         try 
         {
-            config = new Gson().fromJson(jsonConfig, NativeTextFieldConfig.class);
+            GsonBuilder b = new GsonBuilder();
+			b.registerTypeAdapter(Boolean.class, new NativeTextBooleanSerializer());
+			Gson gson = b.create();
+			
+			config = gson.fromJson(jsonConfig, NativeTextFieldConfig.class);
             
             if (config.textAlignment != null)
             {
@@ -75,8 +81,10 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
             return;
         }
         
-// TODO: config.fontAsset
-// setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
+		if(config.fontAsset != null){
+			Typeface t = Typeface.createFromAsset(getContext().getAssets(),config.fontAsset);
+			setTypeface(t);
+		}
         
         if (config.fontColor != null)
         {
@@ -103,8 +111,14 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
         if (config.placeholder != null)
         {
             setHint(config.placeholder);
+			
         }
-        
+		if(config.placeholderColor != null){
+			setHintTextColor (config.placeholderColor);
+		}
+		if(config.backgroundColor != null){
+			setBackgroundColor (config.backgroundColor);
+		}
         SetTextAlignment(config.textAlignmentEnum);
         SetKeyboardType(config.keyboardTypeEnum);
         SetReturnKeyType(config.returnKeyTypeEnum);
@@ -229,12 +243,22 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
         {
             layoutParams.width = (width <= 0.0 ? RelativeLayout.LayoutParams.WRAP_CONTENT : Math.round(width));
             layoutParamsModified = true;
+			if(width != -1)
+			{
+				setMaxWidth(Math.round(width));
+				setMinWidth(Math.round(width));
+			}
         }
 
         if (height != null)
         {
             layoutParams.height = (height <= 0.0 ? RelativeLayout.LayoutParams.WRAP_CONTENT : Math.round(height));
             layoutParamsModified = true;
+			if(height != -1)
+			{
+				setMaxHeight(Math.round(height));
+				setMinHeight(Math.round(height));
+			}
         }
         
         if (layoutParamsModified)

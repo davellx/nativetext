@@ -10,6 +10,8 @@ public class NativeTextFieldConfig
     public Boolean visible;
     public Boolean enabled;
     public String placeholder;
+    public Integer placeholderColor;
+    public Integer backgroundColor;
     public String fontAsset;
     public Integer fontSize;
     public Integer fontColor;

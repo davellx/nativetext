@@ -9,6 +9,8 @@ typedef NativeTextFieldConfig = {
     ?visible : Bool,
     ?enabled : Bool,
     ?placeholder : String,
+    ?placeholderColor : Int,
+    ?backgroundColor : Int,
     ?fontAsset : String,
     ?fontSize : Int,
     ?fontColor : Int,
