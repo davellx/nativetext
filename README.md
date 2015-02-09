@@ -76,7 +76,7 @@ Usage
 				visible: true,
 				enabled: false,
 				placeholder: "Email Address",
-				fontAsset: "assets/font/OpenSans-Regular.ttf",		// TODO: No effect yet
+				fontAsset: Assets.getPath('font/OpenSans-Regular.ttf'),
 				fontSize: 36,
 				fontColor: 0xFF0000,
 				textAlignment: NativeTextFieldAlignment.Center,
