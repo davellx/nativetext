@@ -17,6 +17,8 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import java.io.UnsupportedEncodingException;
+import android.util.Log;
 
 
 class NativeTextField extends EditText implements View.OnFocusChangeListener
@@ -77,6 +79,7 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
         catch (Exception e)
         {
             Trace.Error("Invalid JSON recieved in NativeText.ConfigureTextField()");
+            Trace.Error(jsonConfig);
             Trace.Error(e.toString());
             return;
         }
@@ -108,6 +111,11 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
             setEnabled(config.enabled);
         }
         
+        if (config.alpha != null)
+        {
+            setAlpha(config.alpha);
+        }
+        
         if (config.placeholder != null)
         {
             setHint(config.placeholder);
@@ -126,7 +134,7 @@ class NativeTextField extends EditText implements View.OnFocusChangeListener
     
     public String GetText()
     {
-        return getText().toString();
+		return getText().toString();
     }
     
     public void SetText(String text)

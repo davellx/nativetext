@@ -119,6 +119,7 @@ class NativeTextField extends EventDispatcher
         intConfig.returnKeyType = EnumToInt(config.returnKeyType);        
         return intConfig;
         #end
+		return {}
     }
     
     inline private function EnumToInt(e:EnumValue) : Null<Int>

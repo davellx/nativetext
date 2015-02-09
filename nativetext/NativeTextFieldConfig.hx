@@ -6,6 +6,7 @@ typedef NativeTextFieldConfig = {
     ?y : Float,
     ?width : Float,
     ?height : Float,
+    ?alpha : Float,
     ?visible : Bool,
     ?enabled : Bool,
     ?placeholder : String,

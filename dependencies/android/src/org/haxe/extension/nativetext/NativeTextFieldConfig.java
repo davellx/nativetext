@@ -7,6 +7,7 @@ public class NativeTextFieldConfig
     public Float y;
     public Float width;
     public Float height;
+    public Float alpha;
     public Boolean visible;
     public Boolean enabled;
     public String placeholder;

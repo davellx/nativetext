@@ -1,5 +1,7 @@
 package org.haxe.extension.nativetext;
 
+import org.haxe.extension.extensionkit.Trace;
+
 import java.lang.reflect.Type;
 
 import com.google.gson.JsonDeserializationContext;
@@ -19,6 +21,7 @@ public class NativeTextBooleanSerializer implements JsonSerializer<Boolean>, Jso
 
     @Override
     public Boolean deserialize(JsonElement arg0, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
+		if(arg0.getAsString() == "true" || arg0.getAsString() == "false") return arg0.getAsString() == "true";
         return arg0.getAsInt() == 1;
     }
 }
