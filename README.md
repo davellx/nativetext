@@ -44,7 +44,7 @@ Installation
 ------------
 
     git clone https://github.com/bazzisoft-openfl-extensions/extensionkit
-    git clone https://github.com/bazzisoft-openfl-extensions/nativetext
+    git clone https://github.com/davellx/nativetext
     lime rebuild extensionkit [linux|windows|mac|android|ios]
     lime rebuild nativetext [linux|windows|mac|android|ios]
 
